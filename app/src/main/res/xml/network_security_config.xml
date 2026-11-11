@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The SSLMS backend is served over plain HTTP (http://<SERVER_IP>:<PORT>),
+     so cleartext traffic is allowed. Remove this once the server uses HTTPS. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
