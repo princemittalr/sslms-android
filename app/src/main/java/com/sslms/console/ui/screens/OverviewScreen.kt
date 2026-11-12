@@ -60,7 +60,7 @@ import com.sslms.console.ui.components.Meter
 import com.sslms.console.ui.components.NodeMap
 import com.sslms.console.ui.components.Panel
 import com.sslms.console.ui.components.PanelHead
-import com.sslms.console.ui.components.SodiumButton
+import com.sslms.console.ui.components.LitButton
 import com.sslms.console.ui.components.rememberLoader
 import com.sslms.console.ui.theme.C
 import com.sslms.console.ui.theme.Readout
@@ -107,7 +107,7 @@ fun OverviewScreen(nav: NavController) {
                 Row(Modifier.height(IntrinsicSize.Min)) {
                     Stat(Modifier.weight(1f), "Nodes online", if (fleet.data != null) "$online" else "—", "/ ${nodes.size}") { Meter(online.toFloat(), nodes.size.toFloat(), C.Teal) }
                     VLine()
-                    Stat(Modifier.weight(1f), "Lamps lit", if (fleet.data != null) num(litLamps, 0) else "—", "/ ${num(lamps, 0)}", valueColor = C.Sodium) { Meter(litLamps.toFloat(), lamps.toFloat(), C.Sodium) }
+                    Stat(Modifier.weight(1f), "Lamps lit", if (fleet.data != null) num(litLamps, 0) else "—", "/ ${num(lamps, 0)}", valueColor = C.Lit) { Meter(litLamps.toFloat(), lamps.toFloat(), C.Lit) }
                 }
                 Divider()
                 Row(Modifier.height(IntrinsicSize.Min)) {
@@ -126,7 +126,7 @@ fun OverviewScreen(nav: NavController) {
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 GhostButton("All off", { confirm = false }, Modifier.weight(1f), icon = Icons.Outlined.PowerSettingsNew, enabled = online > 0)
-                SodiumButton("All on", { confirm = true }, Modifier.weight(1f), icon = Icons.Outlined.PowerSettingsNew, enabled = online > 0)
+                LitButton("All on", { confirm = true }, Modifier.weight(1f), icon = Icons.Outlined.PowerSettingsNew, enabled = online > 0)
             }
         }
 
@@ -265,7 +265,7 @@ private fun SelectedNodeCard(n: Node, onOpen: () -> Unit, onControl: (Boolean) -
         )
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             if (n.state != LampState.OFFLINE) {
-                SodiumButton("Turn on", { onControl(true) }, Modifier.weight(1f))
+                LitButton("Turn on", { onControl(true) }, Modifier.weight(1f))
                 GhostButton("Turn off", { onControl(false) }, Modifier.weight(1f))
             }
             GhostButton("Open", onOpen, Modifier.weight(1f), icon = Icons.Outlined.ChevronRight)

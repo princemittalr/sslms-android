@@ -4,12 +4,12 @@ Native Android app for the Smart Street Light Monitoring System (SSLMS), written
 It covers all 21 endpoints in the *SSLMS API Integration Reference*. It also has a **demo mode** with sample data
 (12 nodes around Dhanbad), so every screen works without the backend.
 
-- Package: `com.sslms.console`, version 1.0.0
+- Package: `com.sslms.console`, version 1.0.1
 - Runs on Android 8.0 (API 26) and newer
 
 ## Install the ready-made APK
 
-1. Copy `SSLMS-1.0.0.apk` to the phone (WhatsApp to yourself, Google Drive, or a USB cable).
+1. Copy `SSLMS-1.0.1.apk` to the phone (WhatsApp to yourself, Google Drive, or a USB cable).
 2. Tap it. If Android asks, allow **Install unknown apps** for the app you opened it from.
 3. Open **SSLMS**, choose **Demo data**, and sign in with `admin` / `admin123`.
 

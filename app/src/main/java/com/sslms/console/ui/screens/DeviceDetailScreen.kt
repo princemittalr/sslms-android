@@ -64,7 +64,7 @@ import com.sslms.console.ui.components.Panel
 import com.sslms.console.ui.components.PanelHead
 import com.sslms.console.ui.components.Segmented
 import com.sslms.console.ui.components.SignalBars
-import com.sslms.console.ui.components.SodiumButton
+import com.sslms.console.ui.components.LitButton
 import com.sslms.console.ui.components.Tone
 import com.sslms.console.ui.components.WarnNote
 import com.sslms.console.ui.components.rememberLoader
@@ -171,7 +171,7 @@ fun DeviceDetailScreen(nav: NavController, deviceId: String) {
                 }
                 sync?.first?.source?.let { Text("Source: ${if (it == "HARDWARE_REALTIME") "live from the hardware" else it}", style = MaterialTheme.typography.bodySmall) }
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SodiumButton(if (sending == true) "Sending…" else "Turn on", { control(true) }, Modifier.weight(1f), enabled = d.online && sending == null, icon = Icons.Outlined.PowerSettingsNew)
+                    LitButton(if (sending == true) "Sending…" else "Turn on", { control(true) }, Modifier.weight(1f), enabled = d.online && sending == null, icon = Icons.Outlined.PowerSettingsNew)
                     GhostButton(if (sending == false) "Sending…" else "Turn off", { control(false) }, Modifier.weight(1f), enabled = d.online && sending == null, icon = Icons.Outlined.PowerSettingsNew)
                 }
             }

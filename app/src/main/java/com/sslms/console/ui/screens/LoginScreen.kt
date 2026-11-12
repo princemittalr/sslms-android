@@ -168,13 +168,13 @@ private fun StreetScene(modifier: Modifier) {
             val head = Offset(x + 30.dp.toPx(), topY)
             // light pool
             val pool = Path().apply { moveTo(head.x, head.y + 6.dp.toPx()); lineTo(head.x - 34.dp.toPx(), baseY); lineTo(head.x + 34.dp.toPx(), baseY); close() }
-            drawPath(pool, Brush.verticalGradient(listOf(C.Sodium.copy(alpha = 0.45f * on), Color.Transparent), startY = head.y, endY = baseY))
+            drawPath(pool, Brush.verticalGradient(listOf(C.Lit.copy(alpha = 0.4f * on), Color.Transparent), startY = head.y, endY = baseY))
             // post
             val post = Path().apply { moveTo(x, baseY); lineTo(x, topY + 8.dp.toPx()); quadraticTo(x, topY, x + 8.dp.toPx(), topY); lineTo(head.x - 8.dp.toPx(), topY) }
             drawPath(post, C.Line2, style = Stroke(4.dp.toPx(), cap = StrokeCap.Round))
             // lamp head
             drawRoundRect(
-                if (on > 0.5f) C.Sodium else Color(0xFF4A5588),
+                if (on > 0.5f) C.Lit else Color(0xFF4A5588),
                 topLeft = Offset(head.x - 8.dp.toPx(), head.y - 3.dp.toPx()), size = Size(16.dp.toPx(), 6.dp.toPx()),
                 cornerRadius = androidx.compose.ui.geometry.CornerRadius(2.dp.toPx()),
             )

@@ -192,9 +192,9 @@ private fun dotBitmap(state: LampState, faulted: Boolean, selected: Boolean, den
     val p = Paint(Paint.ANTI_ALIAS_FLAG)
     when (state) {
         LampState.ON -> {
-            p.shader = RadialGradient(cx, cx, r * 3f, intArrayOf(C.Sodium.copy(alpha = 0.6f).toArgb(), 0x00FFB547), null, Shader.TileMode.CLAMP)
+            p.shader = RadialGradient(cx, cx, r * 3f, intArrayOf(C.Lit.copy(alpha = 0.6f).toArgb(), 0x003DDC84), null, Shader.TileMode.CLAMP)
             cv.drawCircle(cx, cx, r * 3f, p)
-            p.shader = null; p.color = C.Sodium.toArgb()
+            p.shader = null; p.color = C.Lit.toArgb()
             cv.drawCircle(cx, cx, r, p)
         }
         LampState.OFF -> {

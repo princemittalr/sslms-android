@@ -55,7 +55,7 @@ import com.sslms.console.data.LampState
 import com.sslms.console.ui.theme.C
 import kotlinx.coroutines.launch
 
-/** The signature element: a lamp dot that glows sodium-amber when lit. */
+/** The signature element: a lamp dot that glows green when the lights are on. */
 @Composable
 fun Lamp(state: LampState, size: Dp = 12.dp) {
     val label = when (state) { LampState.ON -> "Lights on"; LampState.OFF -> "Lights off"; LampState.OFFLINE -> "Offline"; LampState.UNKNOWN -> "No reading" }
@@ -63,8 +63,8 @@ fun Lamp(state: LampState, size: Dp = 12.dp) {
         val r = size.toPx() / 2
         when (state) {
             LampState.ON -> {
-                drawCircle(Brush.radialGradient(listOf(C.Sodium.copy(alpha = 0.55f), Color.Transparent), radius = r * 2), radius = r * 2)
-                drawCircle(C.Sodium, radius = r)
+                drawCircle(Brush.radialGradient(listOf(C.Lit.copy(alpha = 0.55f), Color.Transparent), radius = r * 2), radius = r * 2)
+                drawCircle(C.Lit, radius = r)
             }
             LampState.OFF -> drawCircle(C.Muted, radius = r - 1.dp.toPx(), style = Stroke(2.dp.toPx()))
             LampState.OFFLINE -> drawCircle(C.Line2, radius = r)
@@ -157,9 +157,9 @@ fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifi
 }
 
 @Composable
-fun SodiumButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, icon: ImageVector? = null) {
+fun LitButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, icon: ImageVector? = null) {
     Button(onClick, modifier.height(46.dp), enabled = enabled, shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = C.Sodium, contentColor = C.OnSodium, disabledContainerColor = C.Sodium.copy(alpha = 0.35f), disabledContentColor = C.OnSodium)) {
+        colors = ButtonDefaults.buttonColors(containerColor = C.Lit, contentColor = C.OnLit, disabledContainerColor = C.Lit.copy(alpha = 0.35f), disabledContentColor = C.OnLit)) {
         if (icon != null) { Icon(icon, null, Modifier.size(18.dp)); Spacer(Modifier.width(8.dp)) }
         Text(text, style = MaterialTheme.typography.labelLarge.copy(color = Color.Unspecified))
     }
@@ -244,7 +244,7 @@ fun ConfirmDialog(
             Button(
                 onClick = { busy = true; scope.launch { try { onConfirm(); onDismiss() } catch (_: Exception) { busy = false } } },
                 enabled = !busy,
-                colors = ButtonDefaults.buttonColors(containerColor = if (danger) C.Red else C.Sodium, contentColor = if (danger) Color(0xFF2B0606) else C.OnSodium),
+                colors = ButtonDefaults.buttonColors(containerColor = if (danger) C.Red else C.Lit, contentColor = if (danger) Color(0xFF2B0606) else C.OnLit),
             ) { Text(if (busy) "Working…" else confirmLabel, fontWeight = FontWeight.SemiBold) }
         },
     )

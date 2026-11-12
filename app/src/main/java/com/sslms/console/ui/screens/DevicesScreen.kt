@@ -228,7 +228,7 @@ private fun DeviceCard(n: Node, busy: Boolean, onOpen: () -> Unit, onControl: (B
         Row(Modifier.padding(end = 10.dp), verticalAlignment = Alignment.CenterVertically) {
             Metric("Lamps", num(d.noOfStreetLights, 0), Modifier.weight(1f))
             Metric("Rated", "${num(d.ratedLoad, 0)} W", Modifier.weight(1.2f))
-            Metric("Live", if (n.state == LampState.OFFLINE) "—" else "${num(n.power, 0)} W", Modifier.weight(1.2f), if (n.state == LampState.ON) C.Sodium else C.Text)
+            Metric("Live", if (n.state == LampState.OFFLINE) "—" else "${num(n.power, 0)} W", Modifier.weight(1.2f), if (n.state == LampState.ON) C.Lit else C.Text)
             Relay(n.state, enabled = d.online && !busy, onControl = onControl)
         }
     }
@@ -245,7 +245,7 @@ private fun Metric(label: String, value: String, modifier: Modifier, color: Colo
 @Composable
 fun Relay(state: LampState, enabled: Boolean, onControl: (Boolean) -> Unit) {
     Row(Modifier.clip(RoundedCornerShape(8.dp)).border(BorderStroke(1.dp, C.Line2), RoundedCornerShape(8.dp))) {
-        RelayBtn("On", state == LampState.ON, C.Sodium, C.OnSodium, enabled) { onControl(true) }
+        RelayBtn("On", state == LampState.ON, C.Lit, C.OnLit, enabled) { onControl(true) }
         Box(Modifier.width(1.dp).height(34.dp).background(C.Line2))
         RelayBtn("Off", state == LampState.OFF, C.Panel2, C.Text, enabled) { onControl(false) }
     }

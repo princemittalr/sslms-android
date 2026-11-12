@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sslms.console.R
 
-// "Sodium night": indigo night sky, sodium-lamp amber for lit, teal healthy, red faults.
+// Indigo night sky; green = lights on, teal = healthy, red = faults, amber = interface accent.
 object C {
     val Night = Color(0xFF161C36)
     val Night2 = Color(0xFF1A2142)
@@ -28,6 +28,9 @@ object C {
     val Faint = Color(0xFF6C76A3)
     val Sodium = Color(0xFFFFB547)
     val OnSodium = Color(0xFF2A1A00)
+    /** Lights that are on. */
+    val Lit = Color(0xFF3DDC84)
+    val OnLit = Color(0xFF032612)
     val Teal = Color(0xFF4FD1C5)
     val Red = Color(0xFFFF6B6B)
     val Warn = Color(0xFFF5C451)
